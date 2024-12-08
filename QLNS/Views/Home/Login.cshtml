@@ -1,0 +1,77 @@
+﻿@model QLNS.Models.DangNhap
+@{
+    Layout = null; //không sử dụng layout 
+}
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin 2 - Dashboard</title>
+    <!-- Custom fonts for this template-->
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/longle.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+<br />
+<div class="card" style="box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,0.15)!important;width:36%;margin-left:32%">
+    <div class="card-body login-card-body">
+
+        <div class="p-5">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+            </div>
+            @if (TempData["ThongBaoLoi"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <i class="ci-close-circle me-2"></i>@TempData["ThongBaoLoi"]
+                </div>
+            }
+            <form asp-action="Login" class="user" novalidate>
+                <input type="hidden" asp-for="LienKetChuyenTrang" value="@ViewBag.LienKetChuyenTrang" />
+                <div class="form-group">
+                    <input asp-for="TenDangNhap" class="form-control form-control-user"
+                           id="exampleInputEmail" aria-describedby="emailHelp"
+                           placeholder="Tên Đăng Nhập" required>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for=" MatKhau" class="form-control form-control-user"
+                           id="exampleInputPassword" placeholder="Mật Khẩu" required>
+
+
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" asp-for="DuyTriDangNhap" class="custom-control-input">
+                        <label class="custom-control-label" for="DuyTriDangNhap">
+                            Ghi nhớ mật khẩu
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-user btn-block" type="submit">ĐĂNG NHẬP</button>
+
+
+
+                <hr>
+                <a href="https://myaccount.google.com/intro/personal-info?hl=vi" class="btn btn-google btn-user btn-block">
+                    <i class="fab fa-google fa-fw"></i> Login with Google
+                </a>
+                <a href="https://vi-vn.facebook.com/login/web/" class="btn btn-facebook btn-user btn-block">
+                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                </a>
+            </form>
+            <hr>
+            <div class="text-center">
+                <a class="small" href="forgot-password.html">Forgot Password?</a>
+            </div>
+           
+        </div>
+    </div>
+    <!-- /.login-card-body -->
+</div>
